@@ -2,6 +2,7 @@ package ru.mirea.konnova.questionnaire.model;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Getter
@@ -16,4 +17,11 @@ public class Questionnaire {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Question> questionSet;
+
 }

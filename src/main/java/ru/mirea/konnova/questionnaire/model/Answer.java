@@ -18,5 +18,11 @@ public class Answer {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    Question question;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    User user;
 }
 

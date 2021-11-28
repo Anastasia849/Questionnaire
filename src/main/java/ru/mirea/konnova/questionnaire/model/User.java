@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Collection;
 import java.util.Set;
+import java.util.Date;
 
 @Entity
 @Table(name = "usr")
@@ -37,11 +38,12 @@ public class User implements UserDetails {
     @Column(name = "real_name")
     private String realName;
 
-    private int age;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dob")
+    private Date dateOfBirth;
+
+    @Column(name = "gender")
     private String gender;
-//    private String phone;
-//
-//    private String address;
 
     private boolean active;
 
@@ -51,8 +53,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    private Set<ShoppingCart> shoppingCarts;
+
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Answer> answerSet;
 
 
     @Override

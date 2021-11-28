@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,4 +19,11 @@ public class Question {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "question_id")
+    private Set<Answer> answerSet;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    Questionnaire questionnaire;
 }
