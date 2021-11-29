@@ -51,23 +51,8 @@
                 <ul class="u-nav u-unstyled u-nav-1">
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            href="questionnaire.html" style="padding: 10px 20px;">Опрос</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            href="login.html" style="padding: 10px 20px;">Вход</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            href="registration.html" style="padding: 10px 20px;">Регистрация</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            href="main.html" style="padding: 10px 20px;">Главная</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            href="admin.html" style="padding: 10px 20px;">Администратор</a>
+                            th:method="post" th:href="@{/logout}"
+                            style="padding: 10px 20px;">Выйти</a>
                     </li>
                 </ul>
             </div>
@@ -76,20 +61,9 @@
                     <div class="u-inner-container-layout u-sidenav-overflow">
                         <div class="u-menu-close"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="questionnaire.html"
-                                                      style="padding: 10px 20px;">Опрос</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="login.html"
-                                                      style="padding: 10px 20px;">Вход</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="registration.html"
-                                                      style="padding: 10px 20px;">Регистрация</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="main.html"
-                                                      style="padding: 10px 20px;">Главная</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="admin.html"
-                                                      style="padding: 10px 20px;">Администратор</a>
+
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:method="post" th:href="@{/logout}"
+                                                      style="padding: 10px 20px;">Выйти</a>
                             </li>
                         </ul>
                     </div>
@@ -135,7 +109,7 @@
                         <div class="u-form-group u-form-select u-form-group-3">
                             <label for="select-dfaa" class="u-label">Опрос</label>
                             <div class="u-form-select-wrapper">
-                                <select id="select-dfaa" name="questionnaireName"  th:value="${questionnaireId}"
+                                <select id="select-dfaa" name="questionnaireName" th:value="${questionnaireId}"
                                         class="u-border-1 u-border-grey-30 u-grey-5 u-input u-input-rectangle">
                                     <option th:each="o: ${questionnaire}" th:value="${o.getId()}"
                                             th:text="${o.getName()}">
@@ -148,17 +122,17 @@
                                 </svg>
                             </div>
                         </div>
-<!--                        <div class="u-form-group u-form-name">-->
-<!--                            <label for="name-595e" class="u-label">Опрос</label>-->
-<!--                            <input type="text" id="name-595e" name="name" th:value="${qName}"-->
-<!--                                   class="u-border-1 u-border-grey-30 u-grey-5 u-input u-input-rectangle" required="">-->
-<!--                        </div>-->
+                        <!--                        <div class="u-form-group u-form-name">-->
+                        <!--                            <label for="name-595e" class="u-label">Опрос</label>-->
+                        <!--                            <input type="text" id="name-595e" name="name" th:value="${qName}"-->
+                        <!--                                   class="u-border-1 u-border-grey-30 u-grey-5 u-input u-input-rectangle" required="">-->
+                        <!--                        </div>-->
                         <div class="u-form-group u-form-message">
                             <label for="name-594e" class="u-label">Вопрос</label>
                             <textarea rows="2" cols="50" id="message-0c0c" name="description" th:value="${description}"
                                       class="u-border-1 u-border-grey-30 u-grey-5 u-input u-input-rectangle"
                                       required=""></textarea>
-                            </div>
+                        </div>
                         <div class="u-align-left u-form-group u-form-submit">
                             <input class="u-btn u-btn-round u-btn-submit u-button-style u-radius-17 u-btn-1"
                                    type="submit" value="Отправить">
@@ -172,19 +146,26 @@
 <section class="u-align-center u-clearfix u-white u-section-2" id="sec-454a">
     <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
         <h2 class="u-text u-text-default u-text-1">Опросы</h2>
-        <div class="u-accordion u-spacing-2 u-accordion-1" >
+        <div class="u-accordion u-spacing-2 u-accordion-1">
             <div class="u-accordion-item" th:each="o: ${questionnaire}">
                 <a class="active u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-black u-text-grey-50 u-text-hover-black u-accordion-link-1"
                    id="link-accordion-7c0e" aria-controls="accordion-7c0e" aria-selected="true">
                     <span class="u-accordion-link-text" th:text="${o.getName()}"></span>
+                    <form th:method="delete" th:action="@{/admin/deleteQuestionnaire/{id} (id = ${o.getId()})}"
+                          style="display: inline">
+                        <button class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-1"
+                                type="submit">X
+                        </button>
+                    </form>
                     <span class="u-accordion-link-icon u-icon u-text-grey-40 u-icon-1"><svg class="u-svg-link"
-                                                                                          preserveAspectRatio="xMidYMin slice"
-                                                                                          viewBox="0 0 512 512"
-                                                                                          style=""><use
-                        xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efea"></use></svg><svg
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                        xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-efea"
-                        style="enable-background:new 0 0 512 512;"><g><g><path d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0    c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878    l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"></path>
+                                                                                            preserveAspectRatio="xMidYMin slice"
+                                                                                            viewBox="0 0 512 512"
+                                                                                            style=""><use
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efea"></use></svg><svg
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px"
+                            id="svg-efea"
+                            style="enable-background:new 0 0 512 512;"><g><g><path d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0    c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878    l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"></path>
 </g>
 </g></svg></span>
                 </a>
@@ -198,20 +179,24 @@
                                          version="1.1" xml:space="preserve" class="u-svg-content">–</div>
                                 </div>
                                 <span th:text="${el.getDescription()}"></span>
+                                <form th:method="delete" th:action="@{/admin/deleteQuestion/{id} (id = ${el.getId()})}"
+                                      style="display: inline">
+                                    <button class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-1"
+                                            type="submit">X
+                                    </button>
+                                </form>
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </div>
 
 
-</div>
+        </div>
 
 
-</div>
+    </div>
 </section>
-
 
 
 <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-cb7d">

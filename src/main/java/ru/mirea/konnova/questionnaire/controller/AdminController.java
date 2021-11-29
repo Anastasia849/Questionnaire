@@ -32,11 +32,6 @@ public class AdminController {
     public String addQuestion(@ModelAttribute @Valid QuestionDTO questionDTO, Errors errors,  RedirectAttributes redirectAttributes) {
         return adminService.addQuestion(questionDTO,errors,redirectAttributes);
     }
-//    @PostMapping("/addQuestion")
-//    public String addQuestion(@ModelAttribute("newQuestion") QuestionDTO questionDTO) {
-//        adminService.addQuestion(questionDTO);
-//        return "redirect:/admin";
-//    }
 
     @DeleteMapping("/deleteQuestionnaire/{id}")
     public String deleteQuestionnaire(@PathVariable("id") int id) {

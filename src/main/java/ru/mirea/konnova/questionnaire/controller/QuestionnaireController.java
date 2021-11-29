@@ -35,13 +35,6 @@ public class QuestionnaireController {
     }
 
 
-//    @GetMapping("/questionnaire")
-//    String getQuestionnaire(Model model) {
-//
-//        List<Questionnaire> questionnaires = adminService.getQuestionnaires();
-//        model.addAttribute("questionnaire", questionnaires);
-//        return "questionnaire";
-//    }
 
     @GetMapping("/questionnaire/{id}")
     String getQuestionnaire(@PathVariable("id") int id, Model model) {
@@ -54,9 +47,5 @@ public class QuestionnaireController {
         questionnaireService.addAnswer(answerDTO, user, model);
         return String.format("redirect:/home/questionnaire/%d",questionnaireId);
     }
-//    @PostMapping("/questionnaire/addAnswers")
-//    public String addAnswer(@ModelAttribute Answers answers,  @AuthenticationPrincipal User user, Model model) {
-//        questionnaireService.addAnswers(answers, user, model);
-//        return "redirect:/main";
-//    }
+
 }
